@@ -1,6 +1,6 @@
 const express = require('express');
 const { default: mongoose } = require('mongoose');
-const blogRoutes = require('./Routes/blogroutes');
+const blogRoutes = require('../Routes/blogroutes');
 const dotenv = require("dotenv");
 
 
@@ -8,15 +8,11 @@ dotenv.config();
 
 // express app
 const app = express();
-const port = process.env.PORT;
 const DBURI = process.env.DBURI;
 
 mongoose.connect(DBURI)
     .then((result) => {
         console.log('connected to the database')
-        app.listen(port, () => {
-            console.log(`The server is listening on port number: ${port}`)
-        })
     })
     .catch((err) => console.log(err));
 
@@ -60,3 +56,5 @@ app.use((req, res) => {
 });
 
 
+
+module.exports = app;
