@@ -25,7 +25,9 @@ mongoose.connect(DBURI)
 // Tell Express where to find views, its get lost in production on vercel
 app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
-app.use(express.static('public'));
+// Tell Express where to find public, its get lost in production on vercel
+app.use(express.static(path.join(__dirname, "../public")));
+
 app.use(express.urlencoded({ extended: true }));
 
 
