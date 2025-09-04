@@ -2,6 +2,8 @@ const express = require('express');
 const { default: mongoose } = require('mongoose');
 const blogRoutes = require('../Routes/blogroutes');
 const dotenv = require("dotenv");
+const serverless = require("serverless-http");
+
 
 
 dotenv.config();
@@ -57,4 +59,11 @@ app.use((req, res) => {
 
 
 
-module.exports = app;
+// module.exports = app;
+// module.exports.handler = serverless(app);
+
+// 👉 Instead of module.exports = app;
+// Vercel wants a function:
+module.exports = (req, res) => {
+    app(req, res);
+};
