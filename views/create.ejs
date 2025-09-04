@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<%- include("./partials/head.ejs") %>
+
+
+    <body class="is-preload">
+
+        <!-- Wrapper -->
+        <div id="wrapper" class="divided">
+
+
+            <!-- Seven -->
+            <section class="wrapper style1 align-center " id="create">
+                <div class="inner medium">
+                    <h2>Share your story</h2>
+                    <form method="post" action="/blogs">
+                        <div class="fields">
+                            <div class="field half">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" id="title" required>
+                            </div>
+                            <div class="field ">
+                                <label for="snippet">Snippet</label>
+                                <textarea name="snippet" id="snippet" rows="1"></textarea>
+
+                            </div>
+                            <div class="field">
+                                <label for="body">Content</label>
+                                <textarea name="body" id="body" rows="2" required></textarea>
+                            </div>
+                        </div>
+                        <ul class="actions special">
+                            <li><input type="submit" name="submit" id="submit"></li>
+                            <li><a href="/blogs" class="button big wide smooth-scroll-middle">Go back?</a></li>
+
+                        </ul>
+                    </form>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/jquery.scrollex.min.js"></script>
+        <script src="/assets/js/jquery.scrolly.min.js"></script>
+        <script src="/assets/js/browser.min.js"></script>
+        <script src="/assets/js/breakpoints.min.js"></script>
+        <script src="/assets/js/util.js"></script>
+        <script src="/assets/js/main.js"></script>
+
+    </body>
+
+</html>

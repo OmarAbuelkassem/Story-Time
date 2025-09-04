@@ -1,0 +1,88 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<%- include("./partials/head.ejs") %>
+
+
+    <body class="is-preload">
+        <br>
+
+        <h1 style="text-align: center;">
+            <% const date=new Date(blog.createdAt); %>
+                <%= date.toLocaleString('en-US', { year: 'numeric' , month: 'long' , day: 'numeric' , hour: '2-digit' ,
+                    minute: '2-digit' , second: '2-digit' }) %>
+        </h1>
+
+
+        <!-- Wrapper -->
+        <div id="wrapper" class="divided">
+
+            <section
+                class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+                <div class="content">
+                    <h2>
+                        <%= blog.title %>
+                    </h2>
+                    <p>
+                        <%= blog.body %>
+                    </p>
+                    <ul class="actions ">
+                        <li><a class="button" id="delete" data-doc="<%= blog._id %>">Delete</a></li>
+                        <li><a href="#" class="button" id="update">Update</a></li>
+                        <li><a href="/blogs" class="button">Go Back?</a></li>
+
+
+                    </ul>
+                </div>
+            </section>
+
+
+
+
+        </div>
+
+        <!-- Update button not ready Alert message -->
+        <script>
+            const update_link = document.getElementById('update');
+            update_link.addEventListener('click', () => {
+                // Prevent the default link behavior (navigating to a new page)
+                event.preventDefault();
+                alert('The Update button is not ready yet, STAY TUNED FOLKS')
+            })
+        </script>
+
+        <!-- delete button script -->
+        <script>
+            const trashcan = document.getElementById('delete')
+
+
+            trashcan.addEventListener('click', (e) => {
+                const endpoint = `/blogs/${trashcan.dataset.doc}`;
+
+                fetch(endpoint, {
+                    method: 'DELETE'
+                })
+                    .then(response => response.json())
+                    .then(data => window.location.href = data.redirect)
+                    .catch(err => console.log(err));
+            });
+
+        </script>
+
+        <!-- Scripts -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/jquery.scrollex.min.js"></script>
+        <script src="/assets/js/jquery.scrolly.min.js"></script>
+        <script src="/assets/js/browser.min.js"></script>
+        <script src="/assets/js/breakpoints.min.js"></script>
+        <script src="/assets/js/util.js"></script>
+        <script src="/assets/js/main.js"></script>
+
+    </body>
+
+</html>

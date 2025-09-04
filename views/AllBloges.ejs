@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<%- include("./partials/head.ejs") %>
+
+    <body class="is-preload">
+        <br>
+
+        <h1 style="text-align: center;">Our Stories</h1>
+
+
+        <!-- Wrapper -->
+        <div id="wrapper" class="divided">
+
+
+            <!-- Two -->
+            <% if(blogs.length>0) { %>
+                <% blogs.forEach((blog, index)=> { %>
+                    <section
+                        class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
+                        id="first">
+                        <div class="content">
+                            <h2> <span> # <%= index + 1 %></span> &nbsp;
+                                <span style="  font-family: 'Georgia', serif;
+                                  font-style: italic;
+                                  font-weight: normal;">
+                                    “<%= blog.title %>”
+                                </span>
+                            </h2>
+                            <p>
+                                <%= blog.snippet %>
+                            </p>
+                            <ul class="actions stacked">
+                                <li><a href="/blogs/<%= blog._id %>" class="button">Learn More</a></li>
+                            </ul>
+                        </div>
+
+                    </section>
+                    <% }) %>
+
+                        <% } else { %>
+                            <section
+                                class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
+                                id="first">
+                                <div class="content">
+                                    <h2>
+                                        There are no blogs to show..
+                                    </h2>
+                                    <ul class="actions stacked">
+                                        <li><a href="/blogs/create" class="button">How about you create a one?</a></li>
+                                    </ul>
+                                </div>
+
+                            </section>
+                            <% } %>
+
+                                <!-- Footer -->
+                                <%- include("./partials/footer.ejs") %>
+
+
+        </div>
+
+        <!-- Scripts -->
+        <script src="/assets/js/jquery.min.js"></script>
+        <script src="/assets/js/jquery.scrollex.min.js"></script>
+        <script src="/assets/js/jquery.scrolly.min.js"></script>
+        <script src="/assets/js/browser.min.js"></script>
+        <script src="/assets/js/breakpoints.min.js"></script>
+        <script src="/assets/js/util.js"></script>
+        <script src="/assets/js/main.js"></script>
+
+    </body>
+
+</html>
