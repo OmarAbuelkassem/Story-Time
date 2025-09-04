@@ -18,6 +18,11 @@ mongoose.connect(DBURI)
     })
     .catch((err) => console.log(err));
 
+
+// Global Middleware
+
+// Tell Express where to find views, its get lost in production on vercel
+app.set('views', path.join(__dirname, '../views'));
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
@@ -62,8 +67,7 @@ app.use((req, res) => {
 // module.exports = app;
 // module.exports.handler = serverless(app);
 
-// 👉 Instead of module.exports = app;
-// Vercel wants a function:
+// Instead of module.exports = app;  // Vercel wants a function:
 module.exports = (req, res) => {
     app(req, res);
 };
