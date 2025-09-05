@@ -27,7 +27,7 @@ const blog_create_post = async (req, res) => {
         await blog.save();  // wait for the blog to be saved
 
         // Fetch all blogs sorted by newest first
-        const blogs = await Blog.find().sort({ createdAt: -1 });
+        const blogs = await Blog.find().sort({ createdAt: 1 });
 
         // Render the "AllBloges" page directly
         res.render('AllBloges', { title: 'Stories', blogs });
