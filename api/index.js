@@ -70,7 +70,4 @@ app.use((req, res) => {
 // module.exports = app;
 // module.exports.handler = serverless(app);
 
-// Instead of module.exports = app;  // Vercel wants a function:
-module.exports = (req, res) => {
-    app(req, res);
-};
+module.exports = app;

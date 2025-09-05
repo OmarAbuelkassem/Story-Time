@@ -23,14 +23,18 @@ const blog_create_get = (req, res) => {
 
 const blog_create_post = (req, res) => {
     const blog = new Blog(req.body);
+
     blog.save()
-        .then(result => {
-            res.redirect('/blogs');
+        .then(() => Blog.find().sort({ createdAt: -1 }))
+        .then(blogs => {
+            // Directly render the "all blogs" page instead of redirecting
+            res.render('AllBloges', { title: 'Stories', blogs });
         })
         .catch(err => {
-            console.log(err);
+            console.error(err);
+            res.status(500).send('Something went wrong while creating the blog.');
         });
-}
+};
 
 const blog_details = (req, res) => {
     const id = req.params.id;
